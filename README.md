@@ -1,5 +1,5 @@
 Español/Spanish:
-# Virtualizacion-Juego-de-Memoria-Pokemon-90s
+# Digitalizacion-Juego-de-Memoria-Pokemon-90s
 Este proyecto esta enfocado en virtualizar y remasterizar un juego de memoria de Pokemon de los 90s en React.
 ![about2](https://github.com/user-attachments/assets/4910e1f1-2e12-4486-87a3-ba5073345341)
 <img width="1914" height="900" alt="homescreen" src="https://github.com/user-attachments/assets/caa9b43c-dc91-47b1-a874-4c01787693b5" />
@@ -46,7 +46,7 @@ Creditos:
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 English:
-# Virtualization-Memory-Game-Pokemon-90s
+# Digitization-Memory-Game-Pokemon-90s
 This project focuses on virtualizing and remastering a 90s Pokemon memory game in React.
 ![about2](https://github.com/user-attachments/assets/4910e1f1-2e12-4486-87a3-ba5073345341)
 <img width="1914" height="900" alt="homescreen" src="https://github.com/user-attachments/assets/caa9b43c-dc91-47b1-a874-4c01787693b5" />
