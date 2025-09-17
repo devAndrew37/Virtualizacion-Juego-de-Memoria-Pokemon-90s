@@ -1,0 +1,104 @@
+#pokemon-sprite {
+    max-width: 500px;
+    margin-bottom: -20px;
+    width: 200px;
+    background-color: rgba(240, 239, 239, 0.966);
+    border-radius: 10px;
+
+}
+
+.pokeText {
+  font-size: 35px;
+  font-family: "Press Start 2P", sans-serif;
+  text-align: center;
+  margin-top: 60px;
+  padding: 0px;
+}
+
+.pokeName {
+  font-size: 40px;
+  font-family: "Press Start 2P", sans-serif;
+  text-align: center;
+  margin-top: 60px;
+  margin-bottom: 40px;
+  font-weight: bolder;
+}
+
+.pokemon-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 900;
+}
+
+.popup-pokemon {
+  padding: 10px 75px 40px 75px;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px #0006;
+  text-align: center;
+  width: 750px;
+  min-width: 750px;
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/*themes---------------------------*/
+.popup-pokemon.theme-normal {
+  background: #d52a4a;
+}
+
+.pokeText.theme-normal, .pokeName.theme-normal {
+  color: #ffffff;
+}
+
+
+
+.popup-pokemon.theme-pikachu {
+  background: #f3cf3f;
+}
+
+.pokeText.theme-pikachu, .pokeName.theme-pikachu {
+  color: #222;
+}
+
+.popup-pokemon.theme-charmander {
+  background: #f09146;
+}
+
+.pokeText.theme-charmander, .pokeName.theme-charmander {
+  color: #222;
+}
+
+
+
+.popup-pokemon.theme-bulbasaur {
+  background: #55a480;
+}
+
+.pokeText.theme-bulbasaur, .pokeName.theme-bulbasaur {
+  color: #222;
+}
+
+
+
+.popup-pokemon.theme-squirtle {
+  background: #8db5ac;
+}
+
+.pokeText.theme-squirtle, .pokeName.theme-squirtle {
+  color: #222;
+}
+
+
+
+.popup-pokemon.theme-mewtwo {
+  background: #77569c;
+}
+
+.pokeText.theme-mewtwo, .pokeName.theme-mewtwo {
+  color: #ffffff;
+}

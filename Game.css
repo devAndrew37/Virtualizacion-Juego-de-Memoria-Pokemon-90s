@@ -1,0 +1,484 @@
+.game-board{
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(12, 100px);
+    gap: 10px;
+    justify-items: center;
+    margin: 20px auto 30px auto;
+    width: fit-content;
+    padding: 50px;
+    border: 2px solid #494949;
+    border-radius: 10px;
+    min-height: calc(6 * 100px + 5 * 10px + 100px); /* = 750px */
+}
+
+.card {
+    perspective: 600px;
+    background-color: transparent;
+    width: 100%;
+    aspect-ratio: 1; /* Optional: keeps cards proportional */
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    border-radius: 20px;
+    background-color: #d9d5c8;
+}
+
+.card-front img {
+  background-color: #a7652b;
+}
+
+.backcard {
+    background-color: #a7652b;
+    width: 100%;
+    aspect-ratio: 1;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.backcard:hover {
+    transform: scale(1.05);
+}
+
+.empty-card {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 20px;
+}
+
+.game-area {
+  display: grid;
+  grid-template-columns: minmax(120px, 1fr) auto minmax(120px, 1fr);
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px; /* o el ancho que prefieras */
+  margin: 0 auto;
+}
+
+.turn-indicator {
+  font-size: 2rem;
+  padding: 10px 20px;
+  border-radius: 10px;
+  position: relative;
+  min-width: 120px;
+  text-align: center;
+  display: flex;
+  align-items: center;   /* centra verticalmente */
+  justify-content: center; /* centra horizontalmente */
+  height: 100%; /* opcional, para ocupar toda la altura de la celda */
+  white-space: nowrap;
+  color: white;
+  -webkit-text-stroke: 1px rgb(33, 51, 99);
+}
+
+.turn-indicator.left {
+  grid-column: 1;
+  right: 30px;
+}
+
+.turn-indicator.right {
+  grid-column: 3;
+  left: 30px;
+}
+
+.game-board {
+  grid-column: 2;
+}
+
+.first-player {
+  display: flex;
+  position: relative;
+  right: 45px;
+  flex-wrap: wrap;
+  gap: 40px;
+  height: 100px;
+  border-radius: 12px;
+  padding: 10px 16px;
+  margin: 10px auto 20px auto;
+  width: 80vw;
+  box-shadow: 0 2px 8px #0002;
+  justify-content: center;
+  align-items: center;
+  overflow-x: auto;      /* Permite scroll horizontal si hay muchas cartas */
+  max-width: 90vw;       /* Limita el ancho al 90% de la ventana */
+  white-space: nowrap;    /* Evita que el contenido se envuelva */
+}
+
+.cpu-player {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  height: 100px;
+  border-radius: 12px;
+  padding: 20px 16px;
+  margin: 10px auto 20px auto;
+  width: 80vw;
+  box-shadow: 0 2px 8px #0002;
+  justify-content: center;
+  align-items: center;
+  overflow-x: auto;      /* Permite scroll horizontal si hay muchas cartas */
+  max-width: 90vw;       /* Limita el ancho al 90% de la ventana */
+  white-space: nowrap;    /* Evita que el contenido se envuelva */
+}
+
+.player2-player {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  height: 100px;
+  border-radius: 12px;
+  padding: 20px 16px;
+  margin: 10px auto 20px auto;
+  width: 80vw;
+  box-shadow: 0 2px 8px #0002;
+  justify-content: center;
+  align-items: center;
+  overflow-x: auto;      /* Permite scroll horizontal si hay muchas cartas */
+  max-width: 90vw;       /* Limita el ancho al 90% de la ventana */
+  white-space: nowrap;    /* Evita que el contenido se envuelva */
+  position: relative;
+  right: 40px;
+}
+
+.first-player,
+.player2-player,
+.cpu-player {
+  scrollbar-width: thin;              /* Firefox */
+  scrollbar-color: #eebb09 rgb(63, 94, 140);      /* Firefox */
+}
+
+.first-player-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.second-player-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+#first-player-title {
+  margin: 0 0 0 40px;
+  position: relative;
+  left: 10px;  
+}
+
+#second-player-title {
+  margin: 0 0 0 35px;
+  position: relative;
+  left: 10px;
+}
+
+#cpu-title {
+  margin: 0 0 0 35px;
+  position: relative;
+  left: 50px;
+}
+
+.card-pair {
+  position: relative;
+  width: 48px; /* ajusta según el tamaño de tus cartas */
+  height: 48px;
+  display: inline-block;
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+.card-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 6px;
+  position: absolute;
+  top: -15px;
+  left: 0;
+  box-shadow: 0 2px 6px #0002;
+  background-color: #d9d5c8;
+}
+
+.card-img.overlap {
+  left: 12px; /* ajusta para el grado de superposición */
+  z-index: 1;
+  box-shadow: 0 4px 12px #0003;
+  background-color: #d9d5c8;
+}
+
+.popup-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.popup {
+  color: #222;
+  padding: 32px 45px 32px 45px;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px #0006;
+  text-align: center;
+  min-width: 240px;
+  z-index: 2001;
+  position: fixed;
+}
+
+.popup-coin {
+  color: #222;
+  padding: 32px 80px 32px 80px;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px #0006;
+  text-align: center;
+  min-width: 600px;
+  min-height: 650px;
+}
+
+.coin-option {
+  padding: 20px 20px 0 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.coin-option:hover {
+  transform: scale(1.1);
+  background-color: #f0f0f0;
+}
+
+.coin-option.theme-selected {
+  border: 3px solid #000;
+  background-color: #f0f0f0;
+}
+
+.coin-option.theme-correct {
+  background-color: #4caf50;
+}
+
+.coin-option.theme-failed {
+  background-color: #f44336;
+}
+
+.popup button {
+  margin-top: 20px;
+  padding: 8px 24px;
+  font-size: 1.8rem;
+  border-radius: 8px;
+  border: none;
+  background: rgb(63, 94, 140);
+  color: #fff;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.popup button:hover {
+  background: #eebb09;
+  color: #fff;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.4s ease-in-out;
+  transform-style: preserve-3d;
+}
+
+.card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.card-front {
+  z-index: 2;
+}
+
+.card-back {
+  transform: rotateY(180deg);
+  z-index: 1;
+}
+
+/*themes*/
+body.theme-normal {
+  background-color: #d52a4a;
+  color: #ffffff;
+}
+
+body.theme-pikachu {
+  background-color: #f9d02e;
+  color: #3d7eaa;
+}
+
+body.theme-charmander {
+  background-color: #f57d31;
+  color: #ffffff;
+}
+
+body.theme-bulbasaur {
+  background-color: #4caf50;
+  color: #ffffff;
+}
+
+body.theme-squirtle {
+  background-color: #64b5f6;
+  color: #ffffff;
+}
+
+body.theme-mewtwo {
+  background-color: #e1bee7;
+  color: #ffffff;
+}
+
+/*themes---------------------------*/
+.game-board.theme-normal {
+  background-color: #eebb09;
+}
+
+.first-player.theme-normal,
+.player2-player.theme-normal,
+.cpu-player.theme-normal {
+  background-color: rgb(63, 94, 140);
+} 
+
+.popup.theme-normal,
+.popup-coin.theme-normal {
+  background-color: #d52a4a;
+}
+
+.empty-card.theme-normal {
+  background-color: #f7c821;
+}
+
+
+.game-board.theme-pikachu {
+  background-color: #261c14;
+}
+
+.first-player.theme-pikachu,
+.player2-player.theme-pikachu,
+.cpu-player.theme-pikachu {
+  background-color: #a04e06;
+}
+
+.popup.theme-pikachu,
+.popup-coin.theme-pikachu {
+  background-color: #f3cf3f;
+}
+
+.empty-card.theme-pikachu {
+  background-color: #3d3936;
+}
+
+
+.game-board.theme-charmander {
+  background-color: #121a28;
+}
+
+.first-player.theme-charmander,
+.player2-player.theme-charmander,
+.cpu-player.theme-charmander {
+  background-color: #a23004;
+}
+
+.popup.theme-charmander,
+.popup-coin.theme-charmander {
+  background-color: #f09146;
+}
+
+.empty-card.theme-charmander {
+  background-color: #2d3544;
+}
+
+
+
+.game-board.theme-bulbasaur {
+  background-color: #35141a;
+}
+
+.first-player.theme-bulbasaur,
+.player2-player.theme-bulbasaur,
+.cpu-player.theme-bulbasaur {
+  background-color: #d8b87f;
+}
+
+.popup.theme-bulbasaur,
+.popup-coin.theme-bulbasaur {
+  background-color: #55a480;
+}
+
+.empty-card.theme-bulbasaur {
+  background-color: #5e3b41;
+}
+
+
+
+.game-board.theme-squirtle {
+  background-color: #20444c;
+}
+
+.first-player.theme-squirtle,
+.player2-player.theme-squirtle,
+.cpu-player.theme-squirtle {
+  background-color: #ba681c;
+}
+
+.popup.theme-squirtle,
+.popup-coin.theme-squirtle {
+  background-color: #8db5ac;
+}
+
+.empty-card.theme-squirtle {
+  background-color: #40636b;
+}
+
+
+
+.game-board.theme-mewtwo {
+  background-color: #c4b4d3;
+}
+
+.first-player.theme-mewtwo,
+.player2-player.theme-mewtwo,
+.cpu-player.theme-mewtwo {
+  background-color: #191622;
+}
+
+.popup.theme-mewtwo,
+.popup-coin.theme-mewtwo {
+  background-color: #77569c;
+}
+
+.empty-card.theme-mewtwo {
+  background-color: #d7cae4;
+}
+
+/*themes---------------------------*/
